@@ -1,0 +1,50 @@
+<!--Header start -->
+<div class="Header container-fluid">
+<div class="row"> 
+<div class="col-6 logo-section"><i class="fa fa-star star-color fa-2x pt-2" aria-hidden="true"></i></div>
+<div class="col-6 menu-section">
+<i class="fa fa-search fa-2x" aria-hidden="true"></i>
+<i [routerLink] = "'/checkout-page'" class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><i [routerLink] = "'/checkout-page'" class="fa fa-circle" aria-hidden="true"></i><span [routerLink] = "'/checkout-page'" class="cart-count">{{cartedProducts.length}}</span>
+</div>
+</div>
+</div>
+<!--Header end -->
+<!--boyd start -->
+<div class="container-fluid body-section">
+<div class="row"> 
+<!--filter start -->
+<div class="col-3 filter-section">
+<h6> Filter</h6>
+<ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+<p class="text-center">price</p>
+<div class="text-center"> <button class="btn btn-primary" (click)="filterFunction()">Apply</button></div>
+</div>
+<!--filter end -->
+<!--sort start -->
+<div class="col-9">
+<div class="sort-section row pt-4">
+<h6 class="col-2"> Sort By</h6>
+<p class="col-3" [ngClass]="{'active':priceHigh}" (click)="sortObject('high')">Price -- High to Low</p>
+<p class="col-3" [ngClass]="{'active':priceLow}" (click)="sortObject('low')">Price --Low to High  </p>
+<p class="col-2" [ngClass]="{'active':priceDiscount}" (click)="sortObject('discount')">Discount</p>
+</div>
+<!--sort end -->
+<!--list view start -->
+<div class="item-list">
+<div class="row">
+<div class="product col-3" *ngFor="let item of objectToDisplay">
+<div class="prod-image p-1"><img [src]="item.img_url"></div>
+<div class="prod-name p-1 ">{{item.name}}</div>
+<div class="prod-price"><b class="p-1">{{item.price}} </b><s class="text-muted p-1">900</s> <span class="text-success p-1"><b> {{item.discount}}% Off</b></span></div>
+<div class="prod-cart-button text-center pb-4"><button class="btn btn-warning rounded" (click)="addToCart(item.id)" id="{{item.id}}">Add to Cart</button></div>
+</div>
+</div>
+</div>
+</div>
+<!--List view End -->
+</div>
+</div>
+<!--boyd end -->
+<!--Footer start -->
+<div class="footer text-center">@copyright</div>
+<!--Footer end -->

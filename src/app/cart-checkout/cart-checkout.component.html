@@ -1,0 +1,61 @@
+<!--Header start -->
+<div class="Header container-fluid"  (objectToEmit)="getCartObject($event)">
+<div class="row"> 
+<div class="col-6 logo-section"><i class="fa fa-star star-color fa-2x pt-2" aria-hidden="true"></i></div>
+<div class="col-6 menu-section">
+<i class="fa fa-search fa-2x" aria-hidden="true"></i>
+</div>
+</div>
+</div>
+<!--Header end -->
+<!--boyd Start -->
+<div class="container-fluid">
+<div class="row p-1">
+<div class="cart-product-details col-md-8 col-sm-6">
+<div class="row" *ngFor="let item of cartedObject">
+<div class="prod-image p-1 col-md-3 col-sm-6 text-center"><img [src]="item.img_url"></div>
+<div class="prod-price-details p-1 col-md-9 col-sm-6">
+<div class="row container-fluid">
+<div class="prod-name p-1 col-md-4 col-sm-12"><p></p><br>{{item.name}}<br><b class="p-1">{{item.price}} </b><s class="text-muted p-1">900</s> <span class="text-success p-1"><b> {{item.discount}}% Off</b></span></div>
+<div class="prod-qty p-1 col-md-4 col-sm-12">
+<p></p><br>
+<button class="btn rounded-circle btn-secondary btn-minus" (click)="  IncrementDecrementQuantity('decrement',item.id)"> - </button>
+<button class="btn btn-secondary">{{item.quantity}}</button>
+<button class="btn rounded-circle btn-secondary" (click)="  IncrementDecrementQuantity('increment',item.id)">+</button>
+</div>
+<div class="prod-remove p-1 col-md-4 col-sm-12"><p></p><br><a (click)="removeFromCart(item.id)"><b>REMOVE</b></a></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cart-product-price-details col-md-4 col-sm-6">
+<div class="container-fluid border pl-0 pt-2  pr-0">
+<div class="price-details-header col-12 border border-top-0 border-left-0 border-right-0">
+<p class="text-secondary">PRICE DETAILS</p>
+</div>
+<div class="price-details-body col-12">
+<div class="row container-fluid pl-0 pt-2 pb-2">
+<div class="col-6 item-desc">
+PRICE ({{cartedObject.length}} Items):
+Discouunt :</div>
+<div class="col-6 item-price">
+{{totalPrice}}<br>
+0<br></div>
+</div>
+</div>
+<div class="price-details-footer col-12 border">
+<div class="row container-fluid pl-0 pt-2 pb-2">
+<div class="col-6 item-desc">
+<b>Total Payable</b></div>
+<div class="col-6 item-price">
+{{totalPrice}}</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--boyd end -->
+<!--Footer start -->
+<div class="footer text-center">@copyright</div>
+<!--Footer end -->
