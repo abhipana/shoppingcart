@@ -8,6 +8,7 @@ import { SharedServiceService } from '../shared-service.service';
 export class CartCheckoutComponent implements OnInit {
   cartedObject: any=[];
   totalPrice:any=0;
+  searchText;
   constructor(private sharedService:SharedServiceService) { }
   CalculateTotalAmount(){
     this.totalPrice=0;
