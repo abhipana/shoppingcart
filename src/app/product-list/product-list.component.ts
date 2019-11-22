@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Options } from 'ng5-slider';
 import { CrudoperationService } from '../crudoperation.service';
 import { SharedServiceService } from '../shared-service.service';
+import { ModalService } from '../pop-up-modal/pop-up-modal.service';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -15,21 +16,33 @@ export class ProductListComponent implements OnInit {
     floor: 0,
     ceil: 1000
   };
-
+  searchText;
+  sortValue="high";
   product: any;
   cartedProducts =[];
   objectToDisplay:any =[];
   priceHigh=true;
   priceLow=false;
   priceDiscount=false;
-  constructor(private operations: CrudoperationService, private sharedService:SharedServiceService) { }
+  bodyText: string;
+  constructor(private operations: CrudoperationService, private sharedService:SharedServiceService,private modalService: ModalService) { }
  
   ngOnInit() {
     this.operations.getProducts().subscribe((data)=>{      
       this.objectToDisplay = data;
       this.product=data;
+      this.sortObject('high');
+      this.closeModal('custom-modal-1');
     });
+    this.bodyText = 'This text can be updated in modal 1';
   }
+  openModal(id: string) {
+    this.modalService.open(id);
+}
+
+closeModal(id: string) {
+    this.modalService.close(id);
+}
   addToCart(productID){
     //alert(productID);
 var result;
@@ -57,6 +70,7 @@ var result;
       }
     }
     this.objectToDisplay=tempObject;
+    this.closeModal('custom-modal-2');
   }
   sortObject(type){
     var tempObject=this.objectToDisplay;
@@ -80,13 +94,14 @@ var result;
     }
     else{
       tempObject.sort(function(a, b) { 
-        return a.discount-b.discount;
+        return b.discount-a.discount;
         })        
         this.priceHigh=false;
         this.priceLow=false;
         this.priceDiscount=true;
         this.objectToDisplay=tempObject;
     }
+    this.closeModal('custom-modal-1');
   }
-
+  
 }

@@ -8,19 +8,22 @@ import { AppComponent } from './app.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
 import { ProductListComponent } from './product-list/product-list.component';
-
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
+import { PopUpModalComponent } from './pop-up-modal/pop-up-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
     CartCheckoutComponent,
-    ProductListComponent
+    ProductListComponent,
+    PopUpModalComponent
   ],
   imports: [
     BrowserModule,
     Ng5SliderModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    Ng2SearchPipeModule,FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

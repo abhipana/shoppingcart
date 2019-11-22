@@ -33,6 +33,9 @@ export class CartCheckoutComponent implements OnInit {
       }
     }
   }
+  BuyNow(){
+    alert("Order Placed Successfully.")
+  }
   AddProperty(){
     for(let i=0;i<this.cartedObject.length;i++){
       this.cartedObject[i].quantity=1;

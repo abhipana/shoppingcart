@@ -1,3 +1,4 @@
+@import "../../base"
 $HeaderColor: #5e5edf
 $headerFontColor: white
 $star-color:yellow
@@ -5,6 +6,7 @@ $star-color:yellow
     background-color: $HeaderColor
     color: $headerFontColor
     height: 50px
+    font-family:Verdana
 .star-color
     color:$star-color
 .menu-section 
@@ -14,9 +16,42 @@ $star-color:yellow
 .prod-image img 
     width: 50%
     max-width: 100%
-.cart-product-details.col-md-8.col-sm-6
-    border: 1px solid #c3c3c3
 .btn-minus
     font-size: 19px
     width: 40px
     height: 40px
+.search-text
+    background-color: transparent
+    border-bottom: 1px solid white
+    border-top: none
+    border-left: none
+    border-right: none
+    border-radius: 4px
+    color: white
+    position: relative
+    left: 30px
+.search-text:focus 
+    box-shadow: 0 0 10px #333
+    outline: 0!important
+p,span,h1,div,button,input,b,h6
+    font-family: vardana
+.row.border.p-1.m-1 
+    background-color: white
+@media (max-width: 768px)
+    .two-item-in-row
+        flex: 0 0 60%
+        max-width: 60%
+        padding: 0px 5px
+    .one-item-in-row
+        flex: 0 0 40%
+        max-width: 40%
+        padding: 0px 5px
+    .full-width
+        width:100%
+        max-width:100%
+        flex:100%
+    .hide-in-mobile
+        display: none
+    .prod-image img 
+        width: 100%
+        max-width: 100%
